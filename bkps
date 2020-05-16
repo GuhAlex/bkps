@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source var
+cd $dir
+# Backup of directories containing *avi, *mkv and *mp4 files
+find .  -name *.avi -o -name *.mkv -o -name *.mp4 | grep -o ".*/" | tr '\n' '\0'|  xargs -0 -I{} cp -ru {} $path_movie
+# Backup of directories containg *mp3 files
+find .  -name *.mp3 | grep -o ".*/" |  tr '\n' '\0'| xargs -0 -I{} cp -ru {} $path_songs
+
